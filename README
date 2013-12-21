@@ -1,0 +1,20 @@
+By Boyuan Zhang
+
+Simple 2D Shooter created in C# with the MonoGame framework
+
+KEYS:
+Up arrow - Move Up
+Down arrow - Move Down 
+left arrow - rotate counter-clockwise
+right arrow - rotate clockwise
+space - shoot
+Z key - zoom in
+X key - zoom out
+C key - rotate camera counter-clockwise
+V key - rotate camera clockwise
+
+
+- Project was started for learning purposes of Graphics programming and the MonoGame framework
+
+- Attempting to structure code in a way that will make future development / maintenance on this project as smoothe as possible.
+
