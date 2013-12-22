@@ -86,8 +86,8 @@ namespace SolarBattle
 
             // TODO: use this.Content to load your game content here
             
-            //Load in level one map
-            m_levelOne = new LevelOne(Content.Load<Texture2D>("BasicSpaceBackground"));
+            //Load in level one map, with asteroids texture
+            m_levelOne = new LevelOne(Content.Load<Texture2D>("BasicSpaceBackground"), Content.Load<Texture2D>("Asteroid"));
             
             //Load in player ship with bullet textures
             m_playerShip = new PlayerShip(Content.Load<Texture2D>("Ship"), Content.Load<Texture2D>("Bullet"));
@@ -95,8 +95,8 @@ namespace SolarBattle
             //Initialize player camera (focused on player)
             m_playerCamera = new PlayerCamera(GraphicsDevice.Viewport, 0.5f);
 
-            //Initialize collision engine
-            m_collisionEngine = new Collision(m_levelOne.GetLevelRectangle(), m_playerShip);
+            //Initialize collision engine, with ship, and level
+            m_collisionEngine = new Collision(m_levelOne, m_playerShip);
 
             //Load in mini map with level, camera, and required mini map textures such as... camera / obstacles / enemies
             m_miniMap = new Minimap(m_levelOne, m_playerCamera, Content.Load<Texture2D>("PlayerSphere"));
@@ -149,7 +149,7 @@ namespace SolarBattle
 
             spriteBatch.End();
 
-            //Second sprite batch is for objects that are independent of the camera view
+            //Second sprite batch is for objects that are independent of the camera view, such as menus or the mini map
             //This sprite batch allows for non pre-multiplied blending (Transparent textures)
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
             m_miniMap.Draw(spriteBatch);
@@ -157,9 +157,9 @@ namespace SolarBattle
 
 
             //Uncomment for frame rate testing ----------------------------------------------------------------------------------
-            /*double frameRate = 1 / gameTime.ElapsedGameTime.TotalSeconds;
+            double frameRate = 1 / gameTime.ElapsedGameTime.TotalSeconds;
 
-            g_timeInterval += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            /*g_timeInterval += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (g_timeInterval > 5)
             {

@@ -22,7 +22,7 @@ namespace SolarBattle.Sprites
         //Used a linked-list, because for all updates, every bullet will be traversed always, so required a datastructure with O(1) removal / insertion
         public LinkedList< Bullet> m_bullets;
 
-        public PlayerShip(Texture2D playerShipTexture, Texture2D bulletTexture): base(playerShipTexture, new Vector2(100, 100), Vector2.Zero)
+        public PlayerShip(Texture2D playerShipTexture, Texture2D bulletTexture): base(playerShipTexture, new Vector2(100, 100))
         {
             m_rotation = 1.5f*(float)Math.PI;
             m_friction = 0.02f;
@@ -182,11 +182,6 @@ namespace SolarBattle.Sprites
                         m_speed += 0.3f;
                     break;
             }
-        }
-        //Returns the center point of the ship
-        public Vector2 GetCenter()
-        {
-            return new Vector2(m_position.X + m_texture.Width / 2, m_position.Y + m_texture.Height / 2);
         }
 
         //Returns the bullets linked list of this ship

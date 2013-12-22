@@ -14,12 +14,12 @@ namespace SolarBattle.Sprites
         protected Vector2 m_rotationOrigin;
         protected Vector2 m_position;
 
-        public Sprite(Texture2D spriteTexture, Vector2 spritePosition, Vector2 rotationOrigin)
+        public Sprite(Texture2D spriteTexture, Vector2 spritePosition)
         {
             m_texture = spriteTexture;
             m_position = spritePosition;
             
-            m_rotationOrigin = rotationOrigin;
+            m_rotationOrigin = Vector2.Zero;
             m_rotationOrigin.X = m_texture.Width / 2;
             m_rotationOrigin.Y = m_texture.Height / 2;
         }
@@ -28,6 +28,12 @@ namespace SolarBattle.Sprites
 
         public virtual void Draw(SpriteBatch spriteBatch) { }
 
-        public Rectangle GeneralSpriteBox { get { return new Rectangle((int)m_position.X - m_texture.Width/2, (int)m_position.Y - m_texture.Height/2, m_texture.Width*2, m_texture.Height*2); } }
+        //Returns the center point of the sprite
+        public Vector2 GetCenter()
+        {
+            return new Vector2(m_position.X + m_texture.Width / 2, m_position.Y + m_texture.Height / 2);
+        }
+
+        public Rectangle GeneralSpriteBox { get { return new Rectangle((int)m_position.X, (int)m_position.Y, m_texture.Width, m_texture.Height); } }
     }
 }

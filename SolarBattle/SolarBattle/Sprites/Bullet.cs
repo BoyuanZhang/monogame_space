@@ -14,7 +14,7 @@ namespace SolarBattle.Sprites
         private float m_rotation;
         private bool m_alive;
         
-        public Bullet(Texture2D bulletTexture, Vector2 bulletPosition, Vector2 shipVelocity, float rotation) : base(bulletTexture, bulletPosition, Vector2.Zero)
+        public Bullet(Texture2D bulletTexture, Vector2 bulletPosition, Vector2 shipVelocity, float rotation) : base(bulletTexture, bulletPosition)
         {
             m_bulletVelocity = shipVelocity;
             m_alive = true;
@@ -31,9 +31,11 @@ namespace SolarBattle.Sprites
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(m_texture, GeneralSpriteBox, Color.White);
+            spriteBatch.Draw(m_texture, SpecificSpriteBox, Color.White);
         }
 
         public bool Alive { set { m_alive = value; } get { return m_alive; } }
+
+        public Rectangle SpecificSpriteBox { get { return new Rectangle((int)m_position.X - m_texture.Width / 2, (int)m_position.Y - m_texture.Height / 2, m_texture.Width * 2, m_texture.Height * 2); } }
     }
 }

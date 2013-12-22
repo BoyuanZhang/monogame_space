@@ -35,3 +35,4 @@ C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\MonoGame.
 C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\OpenTK.dll
 C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\Tao.Sdl.dll
 C:\GitRepos\monogame_space\SolarBattle\SolarBattle\obj\x86\Debug\SolarBattle.csprojResolveAssemblyReference.cache
+C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\Content\Asteroid.xnb
