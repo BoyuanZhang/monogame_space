@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 
 using SolarBattle.Sprites;
 using SolarBattle.LevelMaps;
+using SolarBattle.PartitionTree;
 
 namespace SolarBattle.CollisionEngine
 {
@@ -73,14 +74,23 @@ namespace SolarBattle.CollisionEngine
                 bullet.Alive = false;
         }
 
+        //Find the objects that are within the bullets partition space and intersecting the partition space
+        //Go through all these objects, if a collision is found then set the bullet to no longer be alive so it is removed from
+        //the ships list of alive bullets
         private void BulletAsteroidCollisions(Bullet bullet)
         {
-            LinkedList<Asteroid> asteroids = m_level.GetAsteroids();
+            List<LinkedList<Asteroid>> boundAsteroids = m_level.GetAsteroidPartitionTree().GetPartitionItems(bullet.GeneralSpriteBox);
 
-            foreach (Asteroid asteroid in asteroids)
+            if (boundAsteroids.Count > 0)
             {
-                if (bullet.GeneralSpriteBox.Intersects(asteroid.GeneralSpriteBox))
-                    bullet.Alive = false;
+                foreach (LinkedList<Asteroid> asteroids in boundAsteroids)
+                {
+                    foreach (Asteroid asteroid in asteroids)
+                    {
+                        if (bullet.GeneralSpriteBox.Intersects(asteroid.GeneralSpriteBox))
+                            bullet.Alive = false;
+                    }
+                }
             }
         }
     }

@@ -25,8 +25,6 @@ C:\Boyuan\ProgrammingPractice\Backups\SolarBattle\SolarBattle\obj\x86\Debug\Sola
 C:\GitRepos\monogame_space\SolarBattle\SolarBattle\obj\x86\Debug\SolarBattle.exe
 C:\GitRepos\monogame_space\SolarBattle\SolarBattle\obj\x86\Debug\SolarBattle.pdb
 C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\Content\Bullet.xnb
-C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\Content\Ship.xnb
-C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\Content\BasicSpaceBackground.xnb
 C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\Content\PlayerSphere.xnb
 C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\SolarBattle.exe
 C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\SolarBattle.pdb
@@ -36,3 +34,6 @@ C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\OpenTK.dl
 C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\Tao.Sdl.dll
 C:\GitRepos\monogame_space\SolarBattle\SolarBattle\obj\x86\Debug\SolarBattle.csprojResolveAssemblyReference.cache
 C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\Content\Asteroid.xnb
+C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\Content\MapObstacle.xnb
+C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\Content\BasicBlueBackground.xnb
+C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\Content\PlayerShip.xnb

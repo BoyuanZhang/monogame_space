@@ -55,6 +55,7 @@
     <Compile Include="GameWindowHandler.cs" />
     <Compile Include="LevelMaps\LevelOne.cs" />
     <Compile Include="MiniMap\Minimap.cs" />
+    <Compile Include="PartitionTree\SpritePartitionTree.cs" />
     <Compile Include="SpriteAnimator\AnimatedSprite.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Program.cs" />
@@ -88,14 +89,6 @@
     <Content Include="Content\Bullet.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Ship.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\BasicSpaceBackground.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\PlayerSphere.xnb">
@@ -126,6 +119,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Asteroid.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\MapObstacle.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Content\BasicBlueBackground.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\PlayerShip.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

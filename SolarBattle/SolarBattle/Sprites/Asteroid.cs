@@ -19,7 +19,5 @@ namespace SolarBattle.Sprites
         {
             spriteBatch.Draw(m_texture, GeneralSpriteBox, Color.White);
         }
-
-       // public Rectangle SpecificSpriteBox { get { return new Rectangle( )} }
     }
 }

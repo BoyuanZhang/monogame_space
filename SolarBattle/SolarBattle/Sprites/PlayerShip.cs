@@ -154,7 +154,7 @@ namespace SolarBattle.Sprites
                 }
         }
         //Handle Collision detection with border, the collision engine is kind enough to do most the work and throw over the position to move to :) 
-        //Collision types: Type 1 - X border collision, Type 2 - Y border collision
+        //Collision types: Type 1 - X border collision, Type 2 - Y border collision, Type 3 - Asteroid collision (Haven't implemented yet)
         public void ShipCollisionHandler(int collisionType, float newPosition)
         {
             switch (collisionType)

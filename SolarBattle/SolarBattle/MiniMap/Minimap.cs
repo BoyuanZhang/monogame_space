@@ -16,42 +16,68 @@ namespace SolarBattle.MiniMap
         //Positions of the minimap and center of the minimap, relative to the screen
         private const int miniMapWidth = 190;
         private const int miniMapHeight = 190;
-        private const int miniMapCenterX = 95;
-        private const int miniMapCenterY = 95;
         private const int mapOriginX = Main.screenWidth - miniMapWidth - 5;
         private const int mapOriginY = Main.screenHeight - miniMapHeight - 5;
 
         private PlayerCamera m_playerCamera;
-        private LevelOne m_level;
 
         private Rectangle m_miniMapRectangle;
+        private Rectangle m_playerRect;
+
         private Texture2D m_cameraTexture;
 
-        public Minimap(LevelOne levelMap, PlayerCamera playerCamera, Texture2D cameraTexture)
+        private GraphicsDevice m_graphicsDevice;
+        private RenderTarget2D m_mapRenderTarget;
+
+        private float m_msTimeInterval;
+
+        public Minimap(GraphicsDevice graphicsDevice, SpriteBatch spriteBatch, LevelOne levelMap, PlayerCamera playerCamera, Texture2D cameraTexture)
         {
-            m_level = levelMap;
+            //Process minimap texture once, then when updating mini-map we only show the areas that need to be shown
+            m_graphicsDevice = graphicsDevice;
             m_playerCamera = playerCamera;
             m_miniMapRectangle = new Rectangle(mapOriginX, mapOriginY, miniMapWidth, miniMapHeight);
             m_cameraTexture = cameraTexture;
+            m_msTimeInterval = 0;
 
             initializeMapSprites();
+            initializeRenderTarget(spriteBatch, levelMap);
         }
 
         //Initialize all sprites the minimap will use. If mini map initialization is not called, the mini map sprites will not be drawn.
-        public void initializeMapSprites()
+        private void initializeMapSprites()
         {
+            m_playerRect = new Rectangle(mapOriginX + (miniMapWidth/2)-2, mapOriginY + (miniMapHeight/2)-2, 4, 4);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        //Draw the level to a 2D render target once, and use this map as the texture as the source rectangle to draw to the mini map
+        private void initializeRenderTarget(SpriteBatch spriteBatch, LevelOne levelMap)
         {
-            Vector2 cameraCenter = m_playerCamera.getCameraFocus();
-            Texture2D levelTexture = m_level.GetTexture();
-            spriteBatch.Draw(levelTexture, m_miniMapRectangle,
-                                new Rectangle((int)cameraCenter.X - levelTexture.Width / 2, (int)cameraCenter.Y - levelTexture.Width / 2, levelTexture.Width, levelTexture.Height), 
-                                Color.GreenYellow * 0.5f);
+            //4048 represents map height / width
+            m_mapRenderTarget = new RenderTarget2D(m_graphicsDevice, 4048,  4048);
+            m_graphicsDevice.SetRenderTarget(m_mapRenderTarget);
 
-            //draw player at center of the mini map
-            spriteBatch.Draw(m_cameraTexture, new Rectangle( mapOriginX + miniMapCenterX -2, mapOriginY + miniMapCenterY - 2, 4, 4) ,Color.WhiteSmoke );
+            spriteBatch.Begin();
+            levelMap.Draw(spriteBatch);
+            spriteBatch.End();
+
+            m_graphicsDevice.SetRenderTarget(null);
+        }
+
+        public void Draw(SpriteBatch spriteBatch, float elapsedMS)
+        {
+            m_msTimeInterval += elapsedMS;
+            Vector2 cameraCenter = m_playerCamera.getCameraFocus();
+            Rectangle cameraAreaRect = new Rectangle((int)cameraCenter.X - LevelOne.mapWidth / 2, (int)cameraCenter.Y - LevelOne.mapHeight / 2, LevelOne.mapWidth, LevelOne.mapHeight);
+
+            spriteBatch.Draw((Texture2D)m_mapRenderTarget, m_miniMapRectangle, cameraAreaRect, Color.GreenYellow * 0.6f);
+
+            //draw player at center of the mini map once every 500ms
+            if (m_msTimeInterval >= 500)
+            {
+                spriteBatch.Draw(m_cameraTexture, m_playerRect, Color.White);
+                m_msTimeInterval = 0;
+            }
         }
     }
 }
