@@ -34,6 +34,11 @@ namespace SolarBattle.Sprites
             return new Vector2(m_position.X + m_texture.Width / 2, m_position.Y + m_texture.Height / 2);
         }
 
+        public Texture2D GetTexture()
+        {
+            return m_texture;
+        }
+
         public Rectangle GeneralSpriteBox { get { return new Rectangle((int)m_position.X, (int)m_position.Y, m_texture.Width, m_texture.Height); } }
     }
 }

@@ -37,3 +37,9 @@ C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\Content\A
 C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\Content\MapObstacle.xnb
 C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\Content\BasicBlueBackground.xnb
 C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\Content\PlayerShip.xnb
+C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\Content\EnemyShip.xnb
+C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\Content\EnemySphere.xnb
+C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\Content\EnemyBullet.xnb
+C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\Content\PlayerEnergy.xnb
+C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\Content\LoadingScreen.xnb
+C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Debug\Content\GameOverScreen.xnb

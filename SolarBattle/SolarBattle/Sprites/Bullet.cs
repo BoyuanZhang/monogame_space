@@ -34,7 +34,7 @@ namespace SolarBattle.Sprites
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(m_texture, SpecificSpriteBox, Color.Black);
+            spriteBatch.Draw(m_texture, SpecificSpriteBox, Color.White);
         }
 
         //When the bullet is not alive it will be removed from the ships internally maintained bullet list

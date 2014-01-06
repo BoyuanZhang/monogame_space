@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using SolarBattle.Sprites;
+using SolarBattle.Utility;
 
 namespace SolarBattle.PartitionTree
 {
@@ -28,7 +29,7 @@ namespace SolarBattle.PartitionTree
         private int maxItems = 3;
 
         //FOR VISUALIZATION OF QUADTREE ONLY to store unique quads. For actually running of game this should be commented
-        private static Dictionary<Rectangle, Rectangle> m_quadRectangleMap = new Dictionary<Rectangle, Rectangle>();
+       // private static Dictionary<Rectangle, Rectangle> m_quadRectangleMap = new Dictionary<Rectangle, Rectangle>();
         //-------------------------------------------------------------------------------------------------------------
 
         //Creates partition tree with the "master" bounding box, there is no parent partition for this one
@@ -51,7 +52,7 @@ namespace SolarBattle.PartitionTree
         public bool Add(T item)
         {
             //is item contained within this partition's bounding box?
-            if (ContainedWithin( item.GeneralSpriteBox, partitionBox))
+            if (RectangleUtility.ContainedWithin( item.GeneralSpriteBox, partitionBox))
             {
                 if (leftTopPartition == null)
                 {
@@ -85,10 +86,10 @@ namespace SolarBattle.PartitionTree
 
         //For visualization of quadtree only, remove or comment out this method when running game for non-test / debug pruposes
         //--------------------------------------------------------------------
-        public List<Rectangle> GetQuadRectangles()
+      /*  public List<Rectangle> GetQuadRectangles()
         {
             return m_quadRectangleMap.Values.ToList();
-        }
+        }*/
         //--------------------------------------------------------------------
 
         //Find the partition / partitions that contain this rectangle, and return all objects within the partition / partitions
@@ -105,8 +106,8 @@ namespace SolarBattle.PartitionTree
             {
                 //for visualization of quadtree only, remove or comment when running game for non-test / debug purposes.
                 //--------------------------------------------------------------------
-                if( !m_quadRectangleMap.ContainsKey( partitionBox ) )
-                    m_quadRectangleMap.Add(partitionBox, partitionBox);
+               /* if( !m_quadRectangleMap.ContainsKey( partitionBox ) )
+                    m_quadRectangleMap.Add(partitionBox, partitionBox);*/
                 //--------------------------------------------------------------------
 
                 if (leftTopPartition == null)
@@ -126,6 +127,12 @@ namespace SolarBattle.PartitionTree
                 }
 
             }
+        }
+
+        //Clear contents of tree recursively through the public clear call to root
+        public void Clear()
+        {
+            ClearTree(this);
         }
 
         //Split tree into four partitions
@@ -153,13 +160,13 @@ namespace SolarBattle.PartitionTree
             //will hold onto this item
             bool isItemSplit = true;
 
-            if (ContainedWithin(currentNode.Value.GeneralSpriteBox, leftTopPartition.partitionBox))
+            if (RectangleUtility.ContainedWithin(currentNode.Value.GeneralSpriteBox, leftTopPartition.partitionBox))
                 leftTopPartition.Add(currentNode.Value);
-            else if (ContainedWithin(currentNode.Value.GeneralSpriteBox, rightTopPartition.partitionBox))
+            else if (RectangleUtility.ContainedWithin(currentNode.Value.GeneralSpriteBox, rightTopPartition.partitionBox))
                 rightTopPartition.Add(currentNode.Value);
-            else if (ContainedWithin(currentNode.Value.GeneralSpriteBox, leftBottomPartition.partitionBox))
+            else if (RectangleUtility.ContainedWithin(currentNode.Value.GeneralSpriteBox, leftBottomPartition.partitionBox))
                 leftBottomPartition.Add(currentNode.Value);
-            else if (ContainedWithin(currentNode.Value.GeneralSpriteBox, rightBottomPartition.partitionBox))
+            else if (RectangleUtility.ContainedWithin(currentNode.Value.GeneralSpriteBox, rightBottomPartition.partitionBox))
                 rightBottomPartition.Add(currentNode.Value);
             else
                 isItemSplit = false;
@@ -171,13 +178,28 @@ namespace SolarBattle.PartitionTree
                 m_itemList.Remove(currentNode);
         }
 
-        //Helper function to see if a rectangle is wholly contained within another
-        private bool ContainedWithin( Rectangle containee, Rectangle container )
+        private void ClearTree(SpritePartitionTree<T> tree)
         {
-            if( containee.Left < container.Left || containee.Right > container.Right || containee.Top < container.Top || containee.Bottom > container.Bottom )
-                return false;
-            else
-                return true;
+            //Recursively empty this trees items and children, then set children to be null
+            if (tree == null)
+                return;
+
+            if (m_itemList.Count > 0)
+                m_itemList.Clear();
+            if (m_itemsInsideBound.Count > 0)
+                m_itemsInsideBound.Clear();
+
+            if (tree.leftTopPartition != null)
+            {
+                ClearTree(tree.leftTopPartition);
+                tree.leftTopPartition = null;
+                ClearTree(tree.rightTopPartition);
+                tree.rightTopPartition = null;
+                ClearTree(tree.leftBottomPartition);
+                tree.leftBottomPartition = null;
+                ClearTree(tree.rightBottomPartition);
+                tree.rightBottomPartition = null;
+            }
         }
     }
 }
