@@ -17,3 +17,5 @@ C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Release\Content
 C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Release\Content\EnemySphere.xnb
 C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Release\Content\EnemyBullet.xnb
 C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Release\Content\PlayerEnergy.xnb
+C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Release\Content\LoadingScreen.xnb
+C:\GitRepos\monogame_space\SolarBattle\SolarBattle\bin\WindowsGL\Release\Content\GameOverScreen.xnb
