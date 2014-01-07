@@ -17,7 +17,5 @@ C key - rotate camera counter-clockwise
 V key - rotate camera clockwise
 
 
-- Project was started for learning purposes of Graphics programming and the MonoGame framework
-
-- Attempting to structure code in a way that will make future development / maintenance on this project as smoothe as possible.
+- Project was started for learning purposes of 2D Graphics programming and the MonoGame framework
 
